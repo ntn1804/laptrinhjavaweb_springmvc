@@ -12,6 +12,8 @@ public class AbstractDTO<T> {
 	private String createdBy;
 	private String modifiedBy;
 	private long[] ids;
+	
+	// Su dung trong truong hop can tra ve list new, list user
 	private List<T> listResult = new ArrayList<>();
 	private Integer page;
 	private Integer limit;
