@@ -31,8 +31,6 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 		redirectStrategy.sendRedirect(request, response, targetUrl);
 	}
 	
-	
-
 	public RedirectStrategy getRedirectStrategy() {
 		return redirectStrategy;
 	}
@@ -43,9 +41,6 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
 	private String determineTargetUrl(Authentication authentication) {
 		String url = "";
-		
-		// role ADMIN -> redirect to controller: /quan-tri/trang-chu
-		// role USER -> redirect to controller: /trang-chu
 		List<String> roles = SecurityUtils.getAuthorities();
 		if (isAdmin(roles)) {
 			url = "/quan-tri/trang-chu";

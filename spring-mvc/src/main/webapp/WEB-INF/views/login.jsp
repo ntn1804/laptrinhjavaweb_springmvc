@@ -14,10 +14,15 @@
 			<div class="main-div">
 				<c:if test="${param.incorrectAccount != null}">
 					<div class="alert alert-danger">
-							Username or Password is incorrect
+							Username or Password is incorrect.
 					</div>
 				</c:if>
-				<form action="/j_spring_security_check" id="formLogin" method="post">
+				<c:if test="${param.accessDenied != null}">
+					<div class="alert alert-danger">
+							You are not authorized.
+					</div>
+				</c:if>
+				<form action="/spring-mvc/j_spring_security_check" id="formLogin" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" id="userName" name="j_username" placeholder="Tên đăng nhập">
 					</div>

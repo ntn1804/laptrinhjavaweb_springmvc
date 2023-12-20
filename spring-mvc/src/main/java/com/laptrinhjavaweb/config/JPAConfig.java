@@ -22,19 +22,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class JPAConfig {
 
 	@Bean
-	// tạo entity manager factory (load driver + getConnection)
+	// tao entity manager factory (load driver + getConnection)
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 
 		// connect mysql
 		em.setDataSource(dataSource());
 
-		// mapping entity và table trong mysql
+		// mapping entity va table trong mysql
 		em.setPersistenceUnitName("persistence-data");
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 
-		// tự động tạo table trong db
+		// tu dong tao table trong db
 		em.setJpaProperties(additionalProperties());
 		return em;
 	}
@@ -62,12 +62,13 @@ public class JPAConfig {
 		return dataSource;
 	}
 
-	// cấu hình table thông qua Java class (thêm, sửa, xóa,... table)
+	// cau hinh table anh xa qua Java class (them, sua, xoa,... table)
 	Properties additionalProperties() {
 		Properties properties = new Properties();
 		// properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 		// properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.hbm2ddl.auto", "none");
+		properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
 		return properties;
 	}
 }
