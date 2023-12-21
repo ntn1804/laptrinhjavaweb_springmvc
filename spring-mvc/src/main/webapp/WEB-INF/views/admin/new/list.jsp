@@ -83,10 +83,13 @@
 	</div>
 	<!-- /.main-content -->
 	<script>
+		var totalPages = ${model.totalPage};
+		var currentPage = ${model.page};
 		$(function() {
 			window.pagObj = $('#pagination').twbsPagination({
-				totalPages : 100,
+				totalPages : totalPages,
 				visiblePages : 10,
+				startPage: currentPage,
 				onPageClick : function(event, page) {
 					console.info(page + ' (from options)');
 				}
