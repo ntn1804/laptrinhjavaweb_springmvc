@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.laptrinhjavaweb.entity.NewEntity;
 
-// <sử dụng table nào, kiểu dữ liệu của primary key>
-// NewRepository tương tự NewDAO (k cần khai báo @Repository vì đã extends JpaRepository)
+// <su dung table nao, kieu du lieu cua primary key>
+// NewRepository tuong tu NewDAO (k can khai bao @Repository vi da extends JpaRepository)
 public interface NewRepository extends JpaRepository<NewEntity, Long> {
 
 }

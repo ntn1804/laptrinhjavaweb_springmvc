@@ -22,7 +22,7 @@
 							You are not authorized.
 					</div>
 				</c:if>
-				<form action="/spring-mvc/j_spring_security_check" id="formLogin" method="post">
+				<form action="/j_spring_security_check" id="formLogin" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" id="userName" name="j_username" placeholder="Tên đăng nhập">
 					</div>

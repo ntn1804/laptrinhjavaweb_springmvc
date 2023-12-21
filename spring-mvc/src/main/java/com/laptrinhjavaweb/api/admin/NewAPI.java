@@ -12,7 +12,9 @@ import com.laptrinhjavaweb.dto.NewDTO;
 public class NewAPI {
 	
 	@PostMapping("/api/new")
+	// RequestBody = data nhan tu client vao server
 	public NewDTO createNew(@RequestBody NewDTO newDTO) {
+		// return newDTO = kieu data server tra lai client
 		return newDTO;
 	}
 	
