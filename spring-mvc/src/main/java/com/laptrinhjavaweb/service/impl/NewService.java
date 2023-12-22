@@ -31,4 +31,9 @@ public class NewService implements INewService {
 		return models;
 	}
 
+	@Override
+	public int getTotalItem() {
+		return (int) newRepository.count();
+	}
+
 }

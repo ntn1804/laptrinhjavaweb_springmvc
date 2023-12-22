@@ -25,8 +25,10 @@ public class NewController {
 		model.setPage(page);
 		model.setLimit(limit);
 		ModelAndView mav = new ModelAndView("admin/new/list");
-		Pageable pageable = new PageRequest(page, limit);
+		Pageable pageable = new PageRequest(page-1, limit);
 		model.setListResult(newService.findAll(pageable));
+		model.setTotalItem(newService.getTotalItem());
+		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
 		mav.addObject("model", model);
 		return mav;
 	}

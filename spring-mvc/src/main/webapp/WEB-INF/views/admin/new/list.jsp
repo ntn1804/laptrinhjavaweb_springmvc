@@ -1,6 +1,4 @@
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-new" />
-<c:url var="NewURL" value="/admin-new" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,21 +11,17 @@
 
 <body>
 	<div class="main-content">
-		<form action="#" id="formSubmit" method="get">
+		<form action="<c:url value='danh-sach'/>" id="formSubmit" method="get">
 			<div class="main-content-inner">
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Trang
-								chủ</a></li>
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Trang chủ</a></li>
 					</ul>
 					<!-- /.breadcrumb -->
 				</div>
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-							<c:if test="${not empty messageResponse}">
-								<div class="alert alert-${alert}">${messageResponse}</div>
-							</c:if>
 							<div class="widget-box table-filter">
 								<div class="table-btn-controls">
 									<div class="pull-right tableTools-container">
@@ -72,6 +66,8 @@
 											</tbody>
 										</table>
 										<ul class="pagination" id="pagination"></ul>
+										<input type="hidden" value="" id="page" name="page"/>
+										<input type="hidden" value="" id="limit" name="limit"/>
 									</div>
 								</div>
 							</div>
@@ -92,6 +88,11 @@
 				startPage: currentPage,
 				onPageClick : function(event, page) {
 					console.info(page + ' (from options)');
+					if (currentPage != page) {
+						$('#limit').val(2);
+						$('#page').val(page);
+						$('#formSubmit').submit();
+					}
 				}
 			});
 		});
